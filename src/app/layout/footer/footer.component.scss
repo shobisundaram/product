@@ -1,0 +1,25 @@
+footer{
+    background-color: #000;
+    text-align: center;
+    padding: 10px 0;
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-decoration: none;
+        list-style: none;
+        gap: 15px;
+        padding: unset !important;
+    }
+}
+.text-center{
+    text-align: center;
+}
+.text-white{
+    color: #fff;
+}
+.content {
+    a{
+        color: #fff;
+    }
+}

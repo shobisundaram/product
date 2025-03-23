@@ -1,0 +1,48 @@
+<div class="search-filter">
+  <!-- Search Input with Auto-suggestions -->
+   <div class="input-container">
+     <input
+       type="text"
+       placeholder="Search for products..."
+       [(ngModel)]="searchTerm"
+       (input)="onSearchChange(searchTerm)"
+     />
+     <button *ngIf="searchTerm" class="clear-btn" (click)="clearSearch()">&times;</button>
+    </div>
+     <ul class="suggestions" *ngIf="searchSuggestions.length > 0">
+       <li *ngFor="let suggestion of searchSuggestions" (click)="onSelectSuggestion(suggestion)">
+         {{ suggestion }}
+       </li>
+     </ul>
+</div>
+
+<div class="product-grid">
+  <div *ngFor="let product of filteredProducts | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }" class="product-card">
+    <div class="product-image">
+      <img [src]="product.imageUrl" [alt]="product.name" />
+      <div class="overlay">
+        <button (click)="addToCart(product)">Add to Cart</button>
+        <button (click)="viewDetails(product)">View Details</button>
+      </div>
+    </div>
+    <div class="p-4">
+      <h3 class="ellipsis">{{ product.name }}</h3>
+      <div class="merge">
+        <p [class.discount]="product.discount">{{ product.price | currency }}</p>
+        <p *ngIf="product.discount" class="discount-price">{{ product.discountPrice | currency }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="filteredProducts.length === 0">
+  <app-nodata></app-nodata>
+</div>
+<!-- Pagination Section -->
+<div class="pagination-container" *ngIf="filteredProducts.length !== 0">
+  <pagination-controls 
+    (pageChange)="currentPage = $event"
+    [responsive]="true"
+    previousLabel="&#10094;"
+    nextLabel="&#10095;">
+  </pagination-controls>
+</div>

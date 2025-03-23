@@ -1,0 +1,11 @@
+// .img-content{
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+// }
+.img-content {
+    display: grid;
+    place-items: center;
+    height: 50vh;
+  }
+  
