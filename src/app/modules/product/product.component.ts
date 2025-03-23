@@ -17,7 +17,6 @@ import { NodataComponent } from '../nodata/nodata.component';
 export class ProductComponent {
   products: any = [];
   filteredProducts: any = [];
-  collections: string[] = ['All', 'Sports', 'Men', 'Women'];
   searchTerm: string = '';
   selectedCollection: string = 'All';
   searchSuggestions: string[] = [];
